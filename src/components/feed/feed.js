@@ -18,6 +18,7 @@ export default function Feed({ data }) {
                   className="w-full h-full object-fill rounded-md shadow-lg"
                   style={{ objectFit: "fill" }}
                 />
+            
               </div>
             );
           })}

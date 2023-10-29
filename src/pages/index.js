@@ -8,10 +8,12 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 import Feed from '@/components/feed/feed';
 // const inter = Inter({ subsets: ['latin'] })
 import { motion } from "framer-motion"
+import Feedback from '@/components/feed/feedback';
 
 export default function Home() {
   const [image, setImage] = useState(null);
   const [feed, setFeed] = useState([])
+
   const uploadImage = async () => {
     try {
 
@@ -63,8 +65,11 @@ export default function Home() {
         
             >
               <Image src={URL.createObjectURL(image)} alt="my-koi" width={300} height={300} className='rounded-2xl shadow-lg'/>
+
+              <Feedback/>
             </motion.div>
           }
+    
           </div>
  
         </div>
