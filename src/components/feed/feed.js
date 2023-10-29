@@ -1,5 +1,6 @@
 import { API_URL } from "../../../variables";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Feed({ data }) {
   return (
@@ -9,7 +10,11 @@ export default function Feed({ data }) {
           data.map((each) => {
             const src = `${API_URL}\\${each}`;
             return (
-              <div className="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 rounded-2xl h-full max-h-48">
+              <motion.div 
+                initial={{opacity: "0%"}}
+                animate={{opacity: "100%"}}
+                transition={{ ease: "easeInOut", duration: 1.50 }}
+              className="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 rounded-2xl h-full max-h-48">
                 <Image
                   loader={() => src}
                   src={src}
@@ -19,7 +24,7 @@ export default function Feed({ data }) {
                   style={{ objectFit: "fill" }}
                 />
             
-              </div>
+              </motion.div>
             );
           })}
       </div>

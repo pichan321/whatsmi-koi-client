@@ -47,7 +47,7 @@ export default function Home() {
   return (
     // < className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}>
     // </main>  
-    <div className='p-5 background'>
+    <div className='p-5 background' style={{minHeight: "100vh"}}>
         <NavBar/>
       
         <div className='p-10'>
