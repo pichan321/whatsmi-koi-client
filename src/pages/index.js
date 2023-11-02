@@ -13,6 +13,7 @@ import Feedback from '@/components/feed/feedback';
 export default function Home() {
   const [image, setImage] = useState(null);
   const [feed, setFeed] = useState([])
+  const [metadata, setMetadata] = useState(null);
 
   const uploadImage = async () => {
     try {
@@ -21,8 +22,8 @@ export default function Home() {
         file: image
       })
 
-      console.log(response)
-
+      
+      setMetadata(response.data);
       fetchFeed()
     } catch {
       
@@ -50,9 +51,9 @@ export default function Home() {
     <div className='p-5 background' style={{minHeight: "100vh"}}>
         <NavBar/>
       
-        <div className='p-10'>
+        <div className='p-10 space-y-5'>
           <input type="file" id="img" name="img" accept="image/*" onChange={(e) => setImage(e.target.files[0])}/>
-          <Button colorScheme='teal' className='bg-blue-500 rounded-lg p-5' onClick={() => uploadImage()}>Classify</Button>
+          <Button colorScheme='teal' className=' bg-blue-500 rounded-lg p-5' onClick={() => uploadImage()}>Classify</Button>
         </div>
 
         <div className='flex flex-row'>
@@ -64,9 +65,25 @@ export default function Home() {
                 transition={{ ease: "easeInOut", duration: 1 }}
         
             >
-              <Image src={URL.createObjectURL(image)} alt="my-koi" width={300} height={300} className='rounded-2xl shadow-lg'/>
 
-              <Feedback/>
+            <div className='grid grid-cols-12'>
+              <div className='col-span-6'><Image src={URL.createObjectURL(image)} alt="my-koi" width={300} height={300} className='rounded-2xl shadow-lg'/></div>
+              <div className='col-span-6'>
+              {
+                metadata &&
+                <div>
+                 <h3>Upload ID: {metadata.id}</h3>
+                 <h3>Handle: {metadata.handle}</h3>
+                 <h3>KOI ID: {metadata.koi_id}</h3>
+                 <h3>KOI Name: {metadata.koi_name}</h3>
+                </div>
+              }
+              </div>
+            </div>
+             
+           
+ 
+              <Feedback handle={metadata ? metadata.handle : ""}/>
             </motion.div>
           }
     
