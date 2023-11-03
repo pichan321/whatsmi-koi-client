@@ -52,7 +52,7 @@ export default function Home() {
         <NavBar/>
       
         <div className='p-10 space-y-5'>
-          <input type="file" id="img" name="img" accept="image/*" onChange={(e) => setImage(e.target.files[0])}/>
+          <input type="file" id="img" name="img" accept="image/jpg, image/jpeg, image/png" onChange={(e) => setImage(e.target.files[0])}/>
           <Button colorScheme='teal' className=' bg-blue-500 rounded-lg p-5' onClick={() => uploadImage()}>Classify</Button>
         </div>
 
