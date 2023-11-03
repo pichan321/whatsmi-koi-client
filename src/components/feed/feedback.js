@@ -1,13 +1,13 @@
 import { Button } from "@chakra-ui/react";
 import axios from "axios";
 
-export default function Feedback({handle}) {
+export default function Feedback({handle, fetchFeed}) {
 
     const share = async () => {
 
         try {
             var response = await axios.get(`http://localhost:8080/feed-share/${handle}`)
-
+            await fetchFeed()
         } catch {
 
         }

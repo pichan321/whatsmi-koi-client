@@ -76,14 +76,16 @@ export default function Home() {
                  <h3>Handle: {metadata.handle}</h3>
                  <h3>KOI ID: {metadata.koi_id}</h3>
                  <h3>KOI Name: {metadata.koi_name}</h3>
+                 <div className='p-5'>
+                  <Feedback handle={metadata ? metadata.handle : ""} fetchFeed={fetchFeed}/>
+                 </div>
+        
                 </div>
               }
               </div>
             </div>
              
-           
- 
-              <Feedback handle={metadata ? metadata.handle : ""}/>
+          
             </motion.div>
           }
     

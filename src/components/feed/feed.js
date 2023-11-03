@@ -6,9 +6,9 @@ export default function Feed({ data }) {
   return (
     <div className="p-12">
       <div className="grid grid-cols-12 gap-7">
-        {data &&
-          data.map((each) => {
-            const src = `${API_URL}\\${each}`;
+        {data && Array.isArray(data) &&
+          data?.map((each) => {
+            const src = `${API_URL}\\${each.image}`;
             return (
               <motion.div 
                 initial={{opacity: "0%"}}
@@ -23,7 +23,10 @@ export default function Feed({ data }) {
                   className="w-full h-full object-fill rounded-md shadow-lg"
                   style={{ objectFit: "fill" }}
                 />
-            
+                
+              <h3>ID: {each.id}</h3>
+              <h3>Caption: {each.caption}</h3>
+              <h3>Koi Variant: {each.koi_variant}</h3>
               </motion.div>
             );
           })}
