@@ -23,7 +23,6 @@ export default function Home() {
 
   const uploadImage = async () => {
     try {
-
       var response = await fetcher.POSTFORM(API_URL + "/upload", {file: image})
       if (!response) {return}
 
@@ -71,9 +70,13 @@ export default function Home() {
             >
 
             <div className='grid grid-cols-12'>
-              <div className='col-span-6'><Image src={URL.createObjectURL(image)} alt="my-koi" width={300} height={300} className='rounded-2xl shadow-lg'/></div>
-              <div className='col-span-6'>
-             {loading && <ClassifyLoading/>}
+              <div className='col-span-12 md:col-span-4'>
+                <Image src={URL.createObjectURL(image)} alt="my-koi" width={0} height={0} className='rounded-2xl shadow-lg max-h-[400px] md:max-h-[300px] w-full'/>
+
+              </div>
+              <div className='col-span-12 md:col-span-8 text-center'>
+            <div className='flex justify-center items-center w-full h-full'>
+            {loading && <ClassifyLoading/>}
               {!loading &&
                 metadata &&
                 <div>
@@ -87,6 +90,8 @@ export default function Home() {
         
                 </div>
               }
+            </div>
+
               </div>
             </div>
              

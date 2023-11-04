@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 
 export default function Feed({ data }) {
   return (
-    <div className="p-12">
+    <div className="p-12 space-y-10">
+      <h1 className="text-center text-2xl">Upload Feed</h1>
       <div className="grid grid-cols-12 gap-7">
         {data && Array.isArray(data) &&
           data?.map((each) => {

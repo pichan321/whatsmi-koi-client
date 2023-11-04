@@ -1,11 +1,10 @@
-import Image from "next/image";
-import LoadingSVG from "@/images/loading.svg";
 import { useState } from "react";
 import { useEffect } from "react";
 import TextTransition, { presets } from 'react-text-transition';
+import Loading from "./Loading";
 
 const TEXTS = [
-    "Uploading your image",
+    "Uploading",
     "Working on it",
     "Almost there",
     "Almost",
@@ -24,9 +23,9 @@ export default function ClassifyLoading() {
     }, [])
 
     return (
-        <div>
+        <div className="flex justify-center items-center">
             <TextTransition springConfig={presets.wobbly} className="font-bold">{TEXTS[index % TEXTS.length]}</TextTransition>
-             <Image src={LoadingSVG} width={50} height={50}/>
+            <Loading width={50} height={50}/>
         </div>
     )
 }
