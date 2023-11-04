@@ -51,7 +51,7 @@ export default function Home() {
     // </main>
   return (<>
   
-    <h2 className="bg-red-400 p-2 text-center">Whatsmi KOI has not been trained to detect any other images than KOI fish yet. Please refrain from using other images.</h2>
+    <h2 className="bg-red-400 p-2 text-center qs">Whatsmi KOI has not been trained to detect any other images than KOI fish yet. Please refrain from using other images.</h2>
     <div className="p-10 background" style={{ minHeight: "100vh" }}>
       <NavBar />
 
