@@ -47,13 +47,15 @@ export default function Home() {
     fetchFeed();
   }, []);
 
-  return (
-    // < className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}>
+   // < className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}>
     // </main>
+  return (<>
+  
+    <h2 className="bg-red-400 p-2 text-center">Whatsmi KOI has not been trained to detect any other images than KOI fish yet. Please refrain from using other images.</h2>
     <div className="p-10 background" style={{ minHeight: "100vh" }}>
       <NavBar />
 
-      <div className="space-y-5">
+      <div className="space-y-5 flex  items-center">
         <input
           type="file"
           id="img"
@@ -65,6 +67,7 @@ export default function Home() {
           colorScheme="teal"
           className=" bg-blue-500 rounded-lg p-5"
           onClick={() => uploadImage()}
+          isLoading={loading}
         >
           Classify
         </Button>
@@ -115,5 +118,6 @@ export default function Home() {
 
       <Feed data={feed} />
     </div>
+    </>
   );
 }
