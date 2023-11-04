@@ -23,7 +23,7 @@ export default function Feed({ data }) {
                   className="w-full h-full object-fill rounded-md shadow-lg"
                   style={{ objectFit: "fill" }}
                 />
-                
+            
               <h3>ID: {each.id}</h3>
               <h3>Caption: {each.caption}</h3>
               <h3>Koi Variant: {each.koi_variant}</h3>

@@ -10,20 +10,24 @@ import Feed from '@/components/feed/feed';
 import { motion } from "framer-motion"
 import Feedback from '@/components/feed/feedback';
 
+import useFetch from '@/hooks/useFetch';
+
+import Loading from '@/components/ClassifyLoading.js';
+import ClassifyLoading from '@/components/ClassifyLoading.js';
+
 export default function Home() {
   const [image, setImage] = useState(null);
   const [feed, setFeed] = useState([])
   const [metadata, setMetadata] = useState(null);
+  const {loading, fetcher} = useFetch();
 
   const uploadImage = async () => {
     try {
 
-      var response = await axios.postForm(API_URL + "/upload", {
-        file: image
-      })
+      var response = await fetcher.POSTFORM(API_URL + "/upload", {file: image})
+      if (!response) {return}
 
-      
-      setMetadata(response.data);
+      setMetadata(response);
       fetchFeed()
     } catch {
       
@@ -69,7 +73,8 @@ export default function Home() {
             <div className='grid grid-cols-12'>
               <div className='col-span-6'><Image src={URL.createObjectURL(image)} alt="my-koi" width={300} height={300} className='rounded-2xl shadow-lg'/></div>
               <div className='col-span-6'>
-              {
+             {loading && <ClassifyLoading/>}
+              {!loading &&
                 metadata &&
                 <div>
                  <h3>Upload ID: {metadata.id}</h3>
