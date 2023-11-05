@@ -6,13 +6,9 @@ import axios from "axios";
 import { API_URL } from "../../variables";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import Feed from "@/components/feed/feed";
-// const inter = Inter({ subsets: ['latin'] })
 import { motion } from "framer-motion";
 import Feedback from "@/components/feed/feedback";
-
 import useFetch from "@/hooks/useFetch";
-
-import Loading from "@/components/ClassifyLoading.js";
 import ClassifyLoading from "@/components/ClassifyLoading.js";
 
 export default function Home() {
@@ -38,8 +34,10 @@ export default function Home() {
 
   const fetchFeed = async () => {
     try {
-      var response = await axios.get(API_URL + "/feed");
-      setFeed(response.data);
+      var response = await fetcher.GET(API_URL + "/feed");
+      if (!response) {return;}
+
+      setFeed(response);
     } catch {}
   };
 
@@ -55,7 +53,7 @@ export default function Home() {
     <div className="p-10 background" style={{ minHeight: "100vh" }}>
       <NavBar />
 
-      <div className="space-y-5 flex  items-center">
+      <div className="p-5 flex items-center justify-center ">
         <input
           type="file"
           id="img"
