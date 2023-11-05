@@ -74,7 +74,7 @@ export default function Home() {
       {image && (
         <motion.div
           className="grid grid-cols-12 pt-10 pb-10"
-          initial={{ opacity: "0%" }}
+          initial={{ opacity: image ? "100%" : "0%" }}
           animate={{ opacity: "100%" }}
           transition={{ ease: "easeInOut", duration: 1 }}
         >
@@ -96,7 +96,7 @@ export default function Home() {
                         <h3>Upload ID: {metadata.id}</h3>
                         <h3>Handle: {metadata.handle}</h3>
                         <h3>KOI ID: {metadata.koi_id}</h3>
-                        <h3>KOI Name: {metadata.koi_name}</h3>
+                        <h3>KOI Name: {metadata.koi_name} <span className="font-bold">({metadata.koi_variant_jp})</span></h3> 
                         <div className="p-5">
                           <Feedback
                             handle={metadata ? metadata.handle : ""}

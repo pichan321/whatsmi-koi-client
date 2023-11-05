@@ -11,7 +11,10 @@ export default function Feedback({handle, fetchFeed}) {
     const share = async () => {
         var response = await fetcher.GET(`http://localhost:8080/feed-share/${handle}`)
 
-        if (response) {setShared(true)}
+        if (response) {
+            setShared(true)
+            fetchFeed()
+        }
     }
 
     return (<div className="text-center">

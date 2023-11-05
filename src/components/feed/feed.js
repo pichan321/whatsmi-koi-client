@@ -27,7 +27,7 @@ export default function Feed({ data }) {
               <span className="pt-2">
                 <h3>ID: {each.id}</h3>
                 <h3>Caption: {each.caption}</h3>
-                <h3>Koi Variant: {each.koi_variant} {(each.koi_variant_jp !== "" || each.koi_variant_jp) && <span>({each.koi_variant_jp})</span>}</h3>
+                <h3>Koi Variant: {each.koi_variant} {(each.koi_variant_jp !== "" || each.koi_variant_jp) && <span className="font-bold">({each.koi_variant_jp})</span>}</h3>
               </span>
            
               </motion.div>
